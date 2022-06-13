@@ -5,7 +5,7 @@ image: img/micromouse/micromouse-square.jpg
 title: "Micromouse"
 # All dates must be YYYY-MM-DD format!
 date: 2015-07-01
-published: true
+published: false
 labels:
   - Robotics
   - Arduino
