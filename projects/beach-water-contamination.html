@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="Vacation Contamination: Predicting Beach Water Pollution | Katie Amberg-Johnson | Professional Portfolio">
+    <meta name="description" content="">
+    <meta name="image" content="https://github.com/kambergjohnson.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Katie Amberg-Johnson | Professional Portfolio">
+    <meta property="og:url" content="https://kambergjohnson.github.io/projects/beach-water-contamination.html">
+    <meta property="og:title" content="Vacation Contamination: Predicting Beach Water Pollution | Katie Amberg-Johnson | Professional Portfolio">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://github.com/kambergjohnson.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/techfolio-theme/default.css">
+    <link rel="stylesheet" type="text/css" href="/css/rouge/github.css">
+    <!-- Load MathJax if 'mathjax: true' is found in your _config.yml. -->
+    
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+
+    <title>Vacation Contamination: Predicting Beach Water Pollution | Katie Amberg-Johnson | Professional Portfolio</title>
+  </head>
+  <body>
+  <header class="navbar navbar-expand-md navbar-light bg-light bg-gradient border-bottom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Katie Amberg-Johnson</a>
+    <div class="ms-auto">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <a class="nav-link" href="/#papers">Papers</a>
+        <a class="nav-link" href="/#projects">Projects</a>
+        <a class="nav-link" href="/about-me.html">About</a>
+        <a class="nav-link" href="/resources/Amberg_Johnson_Katherine_CV.pdf">CV</a>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div class="container py-4">
+  <h1 class="display-4">Vacation Contamination: Predicting Beach Water Pollution</h1>
+ <p>Beach pollution is a persistent problem leading to serious illness and harming coastal economies. While most cases are not reported, swimming in polluted waters is estimated to cause &gt;3.5 million cases of stomach flu per year in the USA and can be especially dangerous for children, elderly, or individuals with weakened immune systems. Subsequent beach closers impact coastal tourism costing as high as $37k in losses per day. With climate change, increased antibiotic resistance, and population growth, the threat of beach water contamination only gets worse.</p>
+
+<p>In Hawaii, where beaches are integral to local communities and the main driver of the tourism industry, beach water contamination is especially worrisome. To combat this problem, the <a href="http://health.hawaii.gov/cwb/">Hawaii State Department of Health (Clean Water Branch)</a> performs empirical testing for hazardous bacteria at hundreds of sites around the coastline of the Hawaiian Islands. This process is expensive and time consuming, requiring a team of people to visit sites individually to bring samples back to the lab for over-night growth and quantification. Due to limited resources, some sites are sampled once per week, while others are sampled only a few times a year or not at all. Beaches are closed when bacterial levels are discovered to exceed the safety threshold, but due to the low sampling frequency, contamination could persist for many days before the public is warned.</p>
+
+<p>Automated prediction of beach contamination could not only lessen and streamline the workload of the Department of Health but also provide early warning to beach-goes and tourism companies. But what can be used to predict this? While beach water can be contaminated through multiple routes, it commonly occurs from island runoff, leading to increases in beach water turbidity and salinity. Because island runoff occurs during heavy rains, climate and temporal data may be strongly predictive. Measurements of beach water turbidity, salinity, and precipitation are easy to monitor and can be passively collected, which make them ideal data to build my model.</p>
+
+<h2 id="the-data-bacteria--climate">The Data: Bacteria + Climate</h2>
+
+<p>To build a model of bacterial contamination in beach water, I first needed to determine when and where contamination has happened in the past. I scraped the Hawaii Department of Health website for data including bacteria levels, water turbiditiy, and salinity measures from 2004-2017 on Oahu, Hawaii’s most populous island. To get a feel of the data, I first created a tableau visualization of bacterial contamination around Oahu. Each dot represents a site that was sampled for that given week, with green representing low and red representing high levels of bacteria. Toggle through the weeks using the slider bar to visualize bacterial levels.</p>
+
+<div id="tableauViz" style="margin-bottom: 1em"></div>
+
+<p>From this visualization, a few things become apparent about this data.</p>
+<ol>
+  <li>Contamination is rare.</li>
+  <li>Locations are very sparsely and unevenly sampled.</li>
+  <li>Contamination is geographically constrained and does not appear to spread.</li>
+</ol>
+
+<p>Furthermore, by visualizing levels of bacteria over time at each site individually, I noticed blooms of bacterial growth over several orders of magnitude. Below, you can see a plot of bacterial levels over time for individual locations. Use the slider bar or the drop-down menu to see how bacterial levels and sampling frequency changes with location.</p>
+
+<div id="tableauViz2" style="margin-bottom: 1em"></div>
+
+<p>According to the Department of Health, beach water is unsafe when bacterial levels exceed 130 colonies/100mL of water. Since my goal was to provide predictions about beach water safety, I categorized each sample into two classes depending on whether bacterial levels exceeded the safety threshold.</p>
+<ol>
+  <li>Class 0: Safe (levels &lt;130c/100mL)</li>
+  <li>Class 1: Hazardous (levels &gt;130c/100mL)
+  This allowed me to simplify the problem by reframing it as a classification problem.</li>
+</ol>
+
+<h2 id="feature-engineering">Feature Engineering</h2>
+
+<p>After converting the bacterial levels in two categories, I could begin to collect and engineer features to predict beach water contamination. By scraping the Hawaii Department of Health website, I obtained measurements of water turbidity and salinity. I used the Dark Sky API to obtain specific climate information for each location and sampling date/time. Because it may take multiple days for island runoff to make it into the beach water, I also obtained climate data for the three days preceding each sampling. Lastly, I converted the time of year into a continuous function, using a sin/cos transformation, to include temporal information into my model. Some of the climate data is slightly correlated, such as precipitation levels and humidity, however many models including decision trees learn very well despite correlated data.</p>
+
+<p>One feature that I specifically choose not to include was location. The Department of Health currently triages its sampling load based off of location alone. In order to insure that my solution was providing additional value, I omitted this information from my model.</p>
+
+<h2 id="modeling-with-imbalanced-data">Modeling with Imbalanced Data</h2>
+
+<p>The next challenge I needed to address before training my model was the imbalance between my two classes in the data. Thankfully, only 2% of the samples collected by the Department of Health contained hazardous levels of bacteria. This makes model training more difficult because simply guessing that the water is never contaminated gives you a very high accuracy. As expected, when I trained models on raw imbalanced training sets, the algorithm learned to predict the majority class (safe) almost every time and almost never identified hazardous samples.</p>
+
+<p>To compensate for class imbalance, I undersampled from my training set to balance the amount of class 0 (safe) and class 1 (unsafe) in my final training data. While this solution greatly decreases the false negative rate (chance of missing a hazardous sample), it also increases the false positive rate (predicting a hazardous sample when it is actually safe). For this particular application, a low false negative rate is required for this algorithm to be useful and while not ideal, a few false positives are acceptable as they can still be weeded out by empirical testing.</p>
+
+<p>The following image shows a schematic of Undersampling, inspired from https://mangarella.github.io/BreatheFree/:</p>
+
+<p><img class="img-fluid" style="border:3px solid black" src="/images/undersampling.png" alt="" /></p>
+
+<h2 id="picking-an-algorithm">Picking an Algorithm</h2>
+
+<p>Now that I have classified by data into two classes, collected and engineered my features, and generated a balanced training set, my data is ready for machine learning. But what algorithm should I use? Using python’s sklearn, I can easily try many algorithms. For this particular case, I compared each algorithm using the metrics I cared about, recall (true positive rate) and accuracy. While many algorithms resulted in similar results, reporting around 70%-80% recall and similarly high accuracy, I ended up choosing Gradient Boosted Decision Trees because they are non-parametric, robust in the face of correlated data, and most importantly, had a high true positive rate and easy routes to identify feature importance.</p>
+
+<p>The following figure compares the algorithms:</p>
+
+<p><img class="img-fluid" style="border:3px solid black" src="/images/fig_compare.png" alt="" /></p>
+
+<h2 id="evaluating-the-model">Evaluating the Model</h2>
+
+<p>Looking more closely with a confusion matrix, I can really start to evaluate the model. The Gradient Boosted Tree gave great results as the model correctly predicts the majority of all the hazardous samples (with 89% recall). While the false positive rate is higher than would be desirable, the model still successfully identifies 75% of all safe samples correctly. Taken together, following this model would reduce the sampling workload of the Department of Health by over 1/3rd.</p>
+
+<p>Here is the confusion matrix:</p>
+
+<p><img class="img-fluid" style="border:3px solid black" src="/images/fig_confusion.png" alt="" /></p>
+
+<p>Not surprisingly, the top features are the direct measures of the water, the water turbidity and salinity. The next most important feature is the max precipitation at two days prior to the sampling. This also makes sense, given that it may take multiple days for rainwater to carry island runoff into the beach water. Interestingly the time of year feature (“Month”) had very low importance, which may be because Hawaii does not have traditional seasons.</p>
+
+<p>The following shows feature importance:</p>
+
+<p><img class="img-fluid" style="border:3px solid black" src="/images/fig_featureimportance.png" alt="" /></p>
+
+<h2 id="summary-and-future-directions">Summary and Future Directions</h2>
+
+<p>In summary, I’ve created a model that accurately predicts bacterial contamination in Hawaii’s beach water with a true positive rate of 89%. Sampling according to this model would reduce the workload by over 1/3rd. The development of this project spanned only 3 weeks at Insight as a results there are many interesting avenues that I did not have time to explore.</p>
+
+<h4 id="additional-features">Additional Features</h4>
+
+<p>Since these hazardous bacteria are naturally found in human and animal excrement, the beach’s proximity to cesspools and sewer lines could play an important role in its probability of contamination. Popular beaches with heavy human usage could also lead to higher levels of contamination. Additionally, beach water movement could dilute out the hazardous bacteria, suggesting that current strength and waves could be an important features.</p>
+
+<h4 id="model-at-large">Model at Large</h4>
+
+<p>While this data was trained and tested specifically on Hawaii beach water data, I am interested in how this model could be transferred to other locations. In this case, the feature importance may change. For example, the time of year could become more important, depending on the seasonality of the location, and the time delay between predictive rain and sampling could change, depending on the geography.</p>
+
+<h4 id="acknowledgements">Acknowledgements</h4>
+
+<p>This project was developed as part of my participation in the <a href="http://insightdatascience.com/">Insight Data Science Fellows Program</a>. Many thanks to my fellow Fellows for their insights and help in the development of this project.</p>
+
+</div>
+
+<footer class="navbar navbar-expand navbar-light bg-light bg-gradient border-top">
+  <div class="container-fluid">
+    <div class="ms-auto">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <small><a class="nav-link" href="https://techfolios.github.io">Made with Techfolios</a></small>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+  <!-- Load Tableau visualization code for the beach contamination page -->
+  <script src="https://public.tableau.com/javascripts/api/tableau-2.2.1.js"></script>
+
+  <script>
+    function initializeViz(element, url) {
+      // JS object that points at empty div in the html
+      var placeholderDiv = document.getElementById(element);
+      if (placeholderDiv) {
+        var options = {
+          hideTabs: true,
+          hideToolbar: true,
+        };
+        viz = new tableau.Viz(placeholderDiv, url, options);
+      }
+    }
+    initializeViz("tableauViz", "https://public.tableau.com/views/waterqualitymap4/Dashboard1?:embed=y&:display_count=yes&publish=yes");
+    initializeViz("tableauViz2", "https://public.tableau.com/views/waterqualityline/Dashboard2?:embed=y&:display_count=yes");
+  </script>
+
+  </body>
+</html>

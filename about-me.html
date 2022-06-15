@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="title" content="About me | Katie Amberg-Johnson | Professional Portfolio">
+    <meta name="description" content="">
+    <meta name="image" content="https://github.com/kambergjohnson.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Katie Amberg-Johnson | Professional Portfolio">
+    <meta property="og:url" content="https://kambergjohnson.github.io/about-me.html">
+    <meta property="og:title" content="About me | Katie Amberg-Johnson | Professional Portfolio">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://github.com/kambergjohnson.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/techfolio-theme/default.css">
+    <link rel="stylesheet" type="text/css" href="/css/rouge/github.css">
+    <!-- Load MathJax if 'mathjax: true' is found in your _config.yml. -->
+    
+    <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+    
+
+    <title>About me | Katie Amberg-Johnson | Professional Portfolio</title>
+  </head>
+  <body>
+  <header class="navbar navbar-expand-md navbar-light bg-light bg-gradient border-bottom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Katie Amberg-Johnson</a>
+    <div class="ms-auto">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <a class="nav-link" href="/#papers">Papers</a>
+        <a class="nav-link" href="/#projects">Projects</a>
+        <a class="nav-link" href="/about-me.html">About</a>
+        <a class="nav-link" href="/resources/Amberg_Johnson_Katherine_CV.pdf">CV</a>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<div style="background-color: var(--tf-page-bg-color)" class="bg-gradient py-3">
+  <div class="container">
+
+    <h1 class="display-4">About me</h1>
+
+    <p>I am a biologist interested in developing therapeutics that improve human health.</p>
+
+    <p>Currently, I work in the drug development group at <a href="https://www.schrodinger.com/">Schr&ouml;dinger</a> as a biologist, enabling drug discovery programs in diverse disease areas and analyzing new targets for Schr&ouml;dinger's unique physics-based computational modeling platform. Between 2018-2020, I worked at <a href="https://www.flagshippioneering.com/inzen-therapeutics">Inzen Therapeutics</a>, a small biotech startup focused on developing drugs that manipulate cell death. </p>
+
+    <p>Prior to Inzen, I received a Ph.D. in Microbiology and Immunology from Stanford University for work in <a href="https://yehlab.stanford.edu/">Ellen Yeh’s lab</a>. There I focused on identifying novel antimalarials that target the malaria parasite’s unusual and mysterious apicoplast organelle. This work led to four publications, one of which was featured in a <a href="http://blogs.biomedcentral.com/bugbitten/2017/09/15/the-action-of-actinonin-a-new-antimalarial-drug-and-target/">BugBitten blog post</a>! Towards the end of graduate school, I interned at <a href="https://insightfellows.com/data-science">Insight Data Science</a> to develop algorithms that predict bacterial contamination in ocean water. As someone who grew up in Hawaii, this topic was close to my heart.</p>
+
+    <p>Much of my initial interest in science can be credited to my experience as an undergraduate in <a href="http://www.cchem.berkeley.edu/wemmer/home.html">David Wemmer’s lab</a> at UC Berkeley, where I used single-molecule optical tweezers and NMR to study the force-dependent molecular mechanisms of the bacterial transcription factor, sigma54. As a young scientist, I became hooked on the endless and diverse ways in which cells sense and regulate themselves and their environment. This subject continues to inspire me to this day.</p>
+
+  </div>
+</div>
+
+<footer class="navbar navbar-expand navbar-light bg-light bg-gradient border-top">
+  <div class="container-fluid">
+    <div class="ms-auto">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <small><a class="nav-link" href="https://techfolios.github.io">Made with Techfolios</a></small>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+  <!-- Load Tableau visualization code for the beach contamination page -->
+  <script src="https://public.tableau.com/javascripts/api/tableau-2.2.1.js"></script>
+
+  <script>
+    function initializeViz(element, url) {
+      // JS object that points at empty div in the html
+      var placeholderDiv = document.getElementById(element);
+      if (placeholderDiv) {
+        var options = {
+          hideTabs: true,
+          hideToolbar: true,
+        };
+        viz = new tableau.Viz(placeholderDiv, url, options);
+      }
+    }
+    initializeViz("tableauViz", "https://public.tableau.com/views/waterqualitymap4/Dashboard1?:embed=y&:display_count=yes&publish=yes");
+    initializeViz("tableauViz2", "https://public.tableau.com/views/waterqualityline/Dashboard2?:embed=y&:display_count=yes");
+  </script>
+
+  </body>
+</html>

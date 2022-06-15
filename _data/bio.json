@@ -1,0 +1,16 @@
+{
+  "basics": {
+    "name": "Katie Amberg-Johnson",
+    "label": "Senior Scientist, <a href=\"https://www.schrodinger.com/\">Schr&ouml;dinger, Inc.</a>",
+    "picture": "https://github.com/kambergjohnson.png",
+    "email": "katieambergjohnson@gmail.com",
+    "phone": "",
+    "website": "https://kambergjohnson.github.io",
+    "summary": "An interdisciplinary and innovative scientist combining both wet-lab expertise with computational skills. A team-oriented drug discovery biologist with experience contributing in cross-functional teams. Broad interests with projects spanning oncology, liver disease, and infectious disease.",
+    "location": { "address": "", "postalCode": "10002", "city": "New York", "countryCode": "USA", "region": "New York" },
+    "profiles": [
+      { "network": "github", "username": "mmaluhia", "url": "http://github.com/kambergjohnson" },
+      { "network": "linkedin", "username": "mollymaluhia", "url": "http://linkedin.com/in/katieambergjohnson" }
+    ]
+  }
+}
