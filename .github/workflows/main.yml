@@ -16,11 +16,12 @@ jobs:
         uses: limitusus/json-syntax-check@v1
         with:
           pattern: "\\bio.json$"
-      - name: Build & Deploy to GitHub Pages
-      - uses: ruby/setup-ruby@v1
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3'
-      - uses: joshlarsen/jekyll4-deploy-gh-pages@master
+      - name: Deploy
+        uses: joshlarsen/jekyll4-deploy-gh-pages@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
