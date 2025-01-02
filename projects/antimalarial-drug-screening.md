@@ -26,3 +26,7 @@ Because of the lack of genetic tools to manipulate the apicoplast genome, we scr
 {% include captioned-image.html image="Figure-1c.png" caption="Time course of the apicoplast:nuclear genome ratio measured by quantitative PCR (qPCR) using primers for the apicoplast and nuclear genomes during treatment with actinonin and IPP. Genome ratios were normalized to control parasites grown with IPP only. Error bars as in image B." %}
 
 {% include captioned-image.html image="Figure-1d.png" caption="Representative images of the apicoplast of IPP-rescued control and actinonin treated parasites 24 hours after treatment during the schizont stage. The apicoplast is visualized using the P. falciparum reporter strain D10 ACP-GFP in which GFP is targeted to the apicoplast and the nucleus is stained with Hoescht 33342.  During Plasmodium replication, the apicoplast starts as a single small spherical organelle (ring stage) which branches and divides into multiple apicoplasts (schizont stage). A punctate apicoplast that does not branch indicates a defect in apicoplast biogenesis." %}
+
+### For more information
+
+For more information, please see our publication (<https://elifesciences.org/articles/29865>). Additionally, we were thrilled to find this work featured in a [BugBitten blog post](https://blogs.biomedcentral.com/bugbitten/2017/09/15/the-action-of-actinonin-a-new-antimalarial-drug-and-target/). 

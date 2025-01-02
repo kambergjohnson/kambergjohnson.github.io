@@ -50,3 +50,7 @@ Lastly, we validated FtsH1 as the target of actinonin in P. falciparum. Using a 
 {% include captioned-image.html image="Figure-4d.png" caption="Dose-dependent parasite growth inhibition by actinonin (black) or actinamide (red) with and without knockdown of PfFtsH1. Error bars represent the SEM of two biological replicates." %}
 
 {% include captioned-image.html image="Figure-4e.png" caption="Dose-dependent proteolytic inhibition of FITC-labeled casein by PfFtsH1 WT. Error bars represent the SEM of 3 replicates." %}
+
+### For more information
+
+For more information, please see our publication (<https://elifesciences.org/articles/29865>). Additionally, we were thrilled to find this work featured in a [BugBitten blog post](https://blogs.biomedcentral.com/bugbitten/2017/09/15/the-action-of-actinonin-a-new-antimalarial-drug-and-target/). 
