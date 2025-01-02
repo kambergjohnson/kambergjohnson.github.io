@@ -1,6 +1,7 @@
 {%- assign url = '/' | prepend: site.baseurl | prepend: site.url -%}
 {%- assign title = site.title -%}
 {%- assign description = site.description -%}
+{%- assign image = '/img/image.jpg' | prepend: site.baseurl | prepend: site.url -%}
 
 {%- if page.url != '/' -%}
   {%- if page.url -%}
@@ -43,5 +44,25 @@
   <body>
   {{ content }}
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+  <!-- Load Tableau visualization code for the beach contamination page -->
+  <script src="https://public.tableau.com/javascripts/api/tableau-2.2.1.js"></script>
+
+  <script>
+    function initializeViz(element, url) {
+      // JS object that points at empty div in the html
+      var placeholderDiv = document.getElementById(element);
+      if (placeholderDiv) {
+        var options = {
+          hideTabs: true,
+          hideToolbar: true,
+        };
+        viz = new tableau.Viz(placeholderDiv, url, options);
+      }
+    }
+    initializeViz("tableauViz", "https://public.tableau.com/views/waterqualitymap4/Dashboard1?:embed=y&:display_count=yes&publish=yes");
+    initializeViz("tableauViz2", "https://public.tableau.com/views/waterqualityline/Dashboard2?:embed=y&:display_count=yes");
+  </script>
+
   </body>
 </html>
