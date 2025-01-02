@@ -12,17 +12,15 @@ jobs:
     steps:
       - name: GitHub Checkout
         uses: actions/checkout@v1
-      - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.3' # Not needed with a `.ruby-version` or `.tool-versions`
-          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: validate-bio-json-file
         uses: limitusus/json-syntax-check@v1
         with:
           pattern: "\\bio.json$"
       - name: Build & Deploy to GitHub Pages
-        uses: joshlarsen/jekyll4-deploy-gh-pages@master
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.3'
+      - uses: joshlarsen/jekyll4-deploy-gh-pages@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
