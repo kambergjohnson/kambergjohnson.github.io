@@ -3,9 +3,8 @@ layout: project
 type: project
 image: img/micromouse/micromouse-square.jpg
 title: "Micromouse"
-# All dates must be YYYY-MM-DD format!
-date: 2015-07-01
-published: false
+date: 2015
+published: true
 labels:
   - Robotics
   - Arduino
