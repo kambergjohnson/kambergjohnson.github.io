@@ -1,7 +1,7 @@
 ---
 layout: project
 type: project
-image: images/usp7-project.png
+image: images/ubiquitin-specific-protease-7-project-small.png
 title: "Ubiquitin-specific protease 7 inhibitors reveal a differentiated mechanism of p53-driven anti-cancer activity. "
 date: 2024
 published: true
@@ -18,5 +18,8 @@ The USP7 deubiquitinase regulates proteins involved in the cell cycle, DNA repai
 {% include captioned-image.html image="usp7-project.png" caption="" %}
 
 We were thrilled to be chosen as a ["Myeloma Paper of the Day (May 1, 2024)"](https://oncodaily.com/60192.html) by Robert Orlowski, Director of Myeloma Section at MD Anderson Cancer Center. 
+
+
+### For more information
 
 For more, please see our paper: <https://www.cell.com/iscience/fulltext/S2589-0042(24)00915-5>
