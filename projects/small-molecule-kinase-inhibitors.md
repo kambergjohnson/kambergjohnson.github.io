@@ -18,4 +18,4 @@ Drug resistance is a critical challenge in treating diseases like cancer and inf
 
 ### For more information
 
-Please see our paper: <https://chemrxiv.org/engage/chemrxiv/article-details/6734c88f7be152b1d0f72717>
+Please see our paper: <https://pubs.acs.org/doi/full/10.1021/acs.jcim.4c02313>
